@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacob Estrella: ePortfolio</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2; /* changed to subtle gray */
+            color: #444; /* changed to a darker gray */
+            line-height: 1.6;
+        }
+        header {
+            background: linear-gradient(135deg, #b0b0b0, #999999); /* subtle gradient with gray tones */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-bottom: 5px solid #848484; /* slightly darker border */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            font-family: 'Arial Black', sans-serif;
+        }
+        nav {
+            background: linear-gradient(135deg, #848484, #666666); /* subtle gradient with gray tones */
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 1px solid #b0b0b0; /* slightly lighter border */
+        }
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            margin: 0 10px;
+            background: linear-gradient(135deg, #666666, #4d4d4d); /* subtle gradient with gray tones */
+        }
+        nav a:hover {
+            background: linear-gradient(135deg, #4d4d4d, #333333); /* subtle gradient with darker gray tones */
+        }
+        section {
+            padding: 20px;
+            text-align: center;
+            overflow-x: auto;
+            background: #e6e6e6; /* beige undertone */
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+        .gallery {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            padding: 0 20px;
+        }
+        .gallery-item {
+            overflow: hidden;
+            width: 300px;
+            height: 200px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: opacity 0.3s ease;
+        }
+        .gallery-item:hover img {
+            opacity: 0.8;
+        }
+        footer {
+            background: linear-gradient(135deg, #b0b0b0, #999999); /* subtle gradient with gray tones */
+            color: #fff;
+            padding: 30px 20px;
+            text-align: center;
+            border-top: 5px solid #848484; /* slightly darker border */
+            box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+            font-family: 'Arial Black', sans-serif;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            overflow: auto;
+        }
+        .modal-content {
+            display: block;
+            margin: auto;
+            margin-top: 10%;
+            width: 80%;
+            max-width: 800px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            position: relative;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards;
+        }
+        .modal-content img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            color: #fff;
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+        .close-btn:hover {
+            color: #ccc;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 style="font-size: 2.5em;">Jacob Estrella's ePortfolio</h1>
+    </header>
+    <nav>
+        <a href="#">Home</a>
+    </nav>
+    <section>
+        <h2 style="font-size: 2em;">Assignments</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="vision_board.jpg" alt="Image 1" onclick="openModal('vision_board.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="lunar_new_year.jpg" alt="Image 2" onclick="openModal('lunar_new_year.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="fact_board.jpg" alt="Image 3" onclick="openModal('fact_board.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="black_history_month.jpg" alt="Image 4" onclick="openModal('black_history_month.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="bad_valentines_card.jpg" alt="Image 5" onclick="openModal('bad_valentines_card.jpg')">
+            </div>
+            <div class="gallery-item">
+                <img src="good_valentines_card.jpg" alt="Image 6" onclick="openModal('good_valentines_card.jpg')">
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p style="font-size: 1.2em;">Warren's Computer Class 2024</p>
+    </footer>
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <img id="modal-img" src="" alt="">
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            var modal = document.getElementById("myModal");
+            var modalImg = document.getElementById("modal-img");
+            modal.style.display = "block";
+            modalImg.src = imageSrc;
+
+            window.addEventListener('keydown', function(event) {
+                if (event.key === 'Escape') {
+                    closeModal();
+                }
+            });
+        }
+
+        function closeModal() {
+            var modal = document.getElementById("myModal");
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            var modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+    </script>
+</body>
+</html>
